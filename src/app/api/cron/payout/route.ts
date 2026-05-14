@@ -5,6 +5,9 @@ import { getSupabaseAdmin } from "@/lib/supabase-server";
 import { getServerConnection } from "@/lib/server-solana";
 import { getVaultKeypair } from "@/lib/solana-vault";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 const FEE_NUM = 98n;
 const FEE_DEN = 100n;
 const TX_FEE_BUFFER = 5000n;

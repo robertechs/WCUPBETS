@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { assertAdminToken } from "@/lib/cron-auth";
 import { getSupabaseAdmin } from "@/lib/supabase-server";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 type Body = { outcome: "YES" | "NO" };
 
 export async function POST(

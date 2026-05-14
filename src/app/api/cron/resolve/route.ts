@@ -3,6 +3,9 @@ import { assertCronSecret } from "@/lib/cron-auth";
 import { getSupabaseAdmin } from "@/lib/supabase-server";
 import { fetchFdvForSymbol, computeOutcome } from "@/lib/market-resolution";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 export async function POST(request: Request) {
   try {
     assertCronSecret(request);

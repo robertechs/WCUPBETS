@@ -11,6 +11,9 @@ import { getVaultPubkey } from "@/lib/solana-vault";
 import { getServerConnection } from "@/lib/server-solana";
 import { buildBetMemo } from "@/lib/memo-bet";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 const MIN_LAMPORTS = BigInt(Math.floor(0.01 * Number(LAMPORTS_PER_SOL)));
 
 type Body = {

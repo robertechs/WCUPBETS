@@ -5,6 +5,9 @@ import { getVaultPubkey } from "@/lib/solana-vault";
 import { getSupabaseAdmin } from "@/lib/supabase-server";
 import { parseBetMemo } from "@/lib/memo-bet";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 function extractMemoFromLogs(logs: string[] | null | undefined): string | null {
   if (!logs) return null;
   for (const line of logs) {
