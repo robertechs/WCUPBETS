@@ -72,7 +72,7 @@ export function HowItWorksModal({ isOpen, onClose }: HowItWorksModalProps) {
               {/* Step 2: Pick Your Coin — globe icon */}
               <div className="rounded-lg p-3 sm:p-4 text-left sm:text-center border border-[#3B3B3B]/10 bg-white/40 min-w-0">
                 <div className="w-9 h-9 mx-auto mb-2 flex items-center justify-center">
-                  <DeskGlobeIcon className="h-[30px] w-[30px] shrink-0" style={{ color: "#ca9b2a" }} />
+                  <DeskGlobeIcon className="h-[30px] w-[30px] shrink-0" color="#ca9b2a" />
                 </div>
                 <h3 className="text-[#0f172a] font-medium text-sm mb-1 break-words text-balance">
                   {t('howItWorks.step2Title')}

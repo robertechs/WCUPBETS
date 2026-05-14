@@ -98,10 +98,7 @@ export default function CardFullWidth({
   title,
   topic,
   roundId,
-  targetMcUsd,
   percentage: initialPercentage = "50%",
-  yesBetAmount,
-  noBetAmount,
   onYesClick,
   onNoClick,
 }: CardFullWidthProps) {
@@ -125,20 +122,6 @@ export default function CardFullWidth({
   const marketData = useMarketPools(marketId);
 
   const percentage = marketData.percentage || initialPercentage;
-  const yesMultiplier = marketData.odds?.yesMultiplier ?? null;
-  const noMultiplier = marketData.odds?.noMultiplier ?? null;
-  const hasActivity = parseFloat(marketData.totalPool) > 0;
-  const exampleBet = 0.1;
-  const yesBetDisplay =
-    yesBetAmount ||
-    (hasActivity && yesMultiplier
-      ? `${exampleBet} SOL → ${yesMultiplier.toFixed(2)}x`
-      : `${exampleBet} SOL → ?`);
-  const noBetDisplay =
-    noBetAmount ||
-    (hasActivity && noMultiplier
-      ? `${exampleBet} SOL → ${noMultiplier.toFixed(2)}x`
-      : `${exampleBet} SOL → ?`);
 
   const deadlineMs = getRoundDeadlineMs(roundId);
   useEffect(() => {
@@ -230,7 +213,7 @@ export default function CardFullWidth({
     </div>
   );
 
-  const oddsBlock = (_compact: boolean) => (
+  const oddsBlock = () => (
     <div className="flex flex-col w-full text-[#0f172a] font-semibold mt-2">
       <div className="flex justify-between">
         <div
@@ -312,7 +295,7 @@ export default function CardFullWidth({
             <CopyableMint mint={dexA.data?.mint} symbol={marketType === "h2h" ? symA : undefined} />
             {marketType === "h2h" && <CopyableMint mint={dexB.data?.mint} symbol={symB} />}
           </div>
-          {oddsBlock(true)}
+          {oddsBlock()}
           <div className="flex justify-between mt-3 gap-2 text-[12px] text-[rgba(51,65,85,0.85)]">
             <div className="flex gap-2 items-center min-w-0">
               <Image src={time} alt="" className="w-4 h-4 shrink-0 opacity-70" />
@@ -339,7 +322,7 @@ export default function CardFullWidth({
                 <CopyableMint mint={dexA.data?.mint} symbol={marketType === "h2h" ? symA : undefined} />
                 {marketType === "h2h" && <CopyableMint mint={dexB.data?.mint} symbol={symB} />}
               </div>
-              {oddsBlock(false)}
+              {oddsBlock()}
               <div className="flex justify-between mt-3 gap-2 text-[14px] text-[rgba(51,65,85,0.85)]">
                 <div className="flex gap-2 items-center">
                   <Image src={time} alt="" className="w-5 h-5 opacity-70" />

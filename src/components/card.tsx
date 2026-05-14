@@ -98,10 +98,7 @@ export default function Card({
   title,
   topic,
   roundId,
-  targetMcUsd,
   percentage: initialPercentage = "50%",
-  yesBetAmount,
-  noBetAmount,
   onYesClick,
   onNoClick,
 }: CardProps) {
@@ -127,20 +124,6 @@ export default function Card({
   const marketData = useMarketPools(marketId);
 
   const percentage = marketData.percentage || initialPercentage;
-  const exampleBet = 0.1;
-  const yesMultiplier = marketData.odds?.yesMultiplier ?? null;
-  const noMultiplier = marketData.odds?.noMultiplier ?? null;
-  const hasActivity = parseFloat(marketData.totalPool) > 0;
-  const yesBetDisplay =
-    yesBetAmount ||
-    (hasActivity && yesMultiplier
-      ? `${exampleBet} SOL → ${yesMultiplier.toFixed(2)}x`
-      : `${exampleBet} SOL → ?`);
-  const noBetDisplay =
-    noBetAmount ||
-    (hasActivity && noMultiplier
-      ? `${exampleBet} SOL → ${noMultiplier.toFixed(2)}x`
-      : `${exampleBet} SOL → ?`);
 
   const deadlineMs = getRoundDeadlineMs(roundId);
 
