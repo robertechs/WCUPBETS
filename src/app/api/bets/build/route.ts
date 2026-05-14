@@ -10,6 +10,7 @@ import { getSupabaseAdmin } from "@/lib/supabase-server";
 import { getVaultPubkey } from "@/lib/solana-vault";
 import { getServerConnection } from "@/lib/server-solana";
 import { buildBetMemo } from "@/lib/memo-bet";
+import { agentDebugLog } from "@/lib/debug-agent-log";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -40,6 +41,19 @@ export async function POST(request: Request) {
     }
 
     const userPk = new PublicKey(userPubkey);
+
+    // #region agent log
+    agentDebugLog({
+      sessionId: "f6856c",
+      runId: "post-mcp-env",
+      hypothesisId: "H4",
+      location: "api/bets/build/route.ts:POST",
+      message: "before getSupabaseAdmin",
+      data: { marketId, sidePresent: !!side },
+      timestamp: Date.now(),
+    });
+    // #endregion
+
     const supabase = getSupabaseAdmin();
 
     const { data: market, error: mErr } = await supabase
