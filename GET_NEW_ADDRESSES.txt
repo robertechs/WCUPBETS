@@ -1,0 +1,40 @@
+═══════════════════════════════════════════════════════════════
+  UPDATE NEW MARKET ADDRESSES - OCTOBER 31
+═══════════════════════════════════════════════════════════════
+
+The 3 markets were deployed successfully with October 31 deadlines!
+
+TO GET THE NEW CONTRACT ADDRESSES:
+
+1. 币安人生 ($400M) Market:
+   https://bscscan.com/tx/0x43963a5edf166c8f76f3c27e2de3b205f4e9c31f4833a7aa5adb50e0be6534d9
+   → Click "Internal Txns" tab
+   → Find the contract creation address
+   → Update in: src/contracts/BinaryMarketV2.ts line 117
+
+2. PALU ($40M) Market:
+   https://bscscan.com/tx/0x05739439c80c5e1d1a66ede94509c725f42d78a28774978ad4928827bdf19479
+   → Click "Internal Txns" tab
+   → Find the contract creation address
+   → Update in: src/contracts/BinaryMarketV2.ts line 133
+
+3. BNB ($1,300) Market:
+   https://bscscan.com/tx/0x1b350b1a0b04f80af8b69003607155c80389fd13077c9321a4f4f7107ea30219
+   → Click "Internal Txns" tab
+   → Find the contract creation address
+   → Update in: src/contracts/BinaryMarketV2.ts line 109
+
+───────────────────────────────────────────────────────────────
+
+ALREADY UPDATED IN FRONTEND:
+✅ All market titles changed to "October 31"
+✅ All deadlines updated to October 31, 8PM or 10PM ET
+✅ English and Chinese translations updated
+✅ betCards.ts updated with new dates
+
+JUST NEED TO:
+□ Get the 3 new contract addresses from BSCScan
+□ Replace the old addresses in BinaryMarketV2.ts
+
+═══════════════════════════════════════════════════════════════
+

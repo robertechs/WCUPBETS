@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  resolver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hivebets-resolver
+    restart: unless-stopped
+    environment:
+      - RESOLVER_PRIVATE_KEY=${RESOLVER_PRIVATE_KEY}
+      - BSC_RPC_URL=${BSC_RPC_URL:-https://bsc-dataseed.binance.org/}
+      - CHECK_INTERVAL=${CHECK_INTERVAL:-5000}
+      - SORA_ORACLE_ENDPOINT=${SORA_ORACLE_ENDPOINT:-https://api.soraoracle.com}
+    volumes:
+      - ./auto-resolver/resolver.log:/app/resolver.log
+      - ./auto-resolver/social_outcomes.json:/app/social_outcomes.json
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    healthcheck:
+      test: ["CMD", "node", "-e", "process.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+

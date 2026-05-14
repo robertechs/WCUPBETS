@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="none">
+  <defs>
+    <radialGradient id="g" cx="50%" cy="18%" r="70%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="crowd" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="25%" stop-color="#000000" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.55"/>
+    </linearGradient>
+    <filter id="blur" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="800" cy="260" rx="820" ry="330" fill="url(#g)"/>
+
+  <g opacity="0.75" filter="url(#blur)">
+    <circle cx="170" cy="140" r="70" fill="#ffd35a" fill-opacity="0.22"/>
+    <circle cx="1430" cy="140" r="70" fill="#ffd35a" fill-opacity="0.22"/>
+    <circle cx="800" cy="105" r="95" fill="#ffd35a" fill-opacity="0.14"/>
+  </g>
+
+  <g opacity="0.14">
+    <path d="M170 160 L0 650 L0 900 L320 900 L320 640 Z" fill="#ffffff"/>
+    <path d="M1430 160 L1280 640 L1280 900 L1600 900 L1600 650 Z" fill="#ffffff"/>
+    <path d="M800 130 L610 620 L610 900 L990 900 L990 620 Z" fill="#ffffff"/>
+  </g>
+
+  <g opacity="0.12">
+    <rect x="180" y="540" width="1240" height="300" rx="28" fill="#22c55e"/>
+    <rect x="210" y="570" width="1180" height="240" rx="22" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="4"/>
+    <line x1="800" y1="570" x2="800" y2="810" stroke="#ffffff" stroke-opacity="0.55" stroke-width="3"/>
+    <circle cx="800" cy="690" r="62" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="3"/>
+  </g>
+
+  <rect x="0" y="610" width="1600" height="290" fill="url(#crowd)"/>
+  <g opacity="0.18">
+    <path d="M0 690 C140 640, 260 760, 400 710 C540 660, 660 760, 800 710 C940 660, 1060 760, 1200 710 C1340 660, 1460 760, 1600 710 L1600 900 L0 900 Z" fill="#000"/>
+  </g>
+
+  <g opacity="0.22">
+    <path d="M300 80 l20 8" stroke="#fbbf24" stroke-width="5" stroke-linecap="round"/>
+    <path d="M520 60 l16 18" stroke="#22c55e" stroke-width="5" stroke-linecap="round"/>
+    <path d="M1100 70 l22 -2" stroke="#60a5fa" stroke-width="5" stroke-linecap="round"/>
+    <path d="M1320 90 l10 18" stroke="#fb7185" stroke-width="5" stroke-linecap="round"/>
+    <path d="M760 45 l18 10" stroke="#fde68a" stroke-width="5" stroke-linecap="round"/>
+  </g>
+</svg>

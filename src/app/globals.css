@@ -1,0 +1,517 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('../fonts/ppneuemontreal-thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('../fonts/ppneuemontreal-book.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('../fonts/ppneuemontreal-medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('../fonts/ppneuemontreal-semibolditalic.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('../fonts/ppneuemontreal-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('../fonts/ppneuemontreal-italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* worldcupcoins.org :root */
+  --wc-white: rgba(255, 255, 255, 0.92);
+  --wc-glass: rgba(255, 255, 255, 0.8);
+  --wc-ink: #0f172a;
+  --wc-muted: rgba(255, 255, 255, 0.92);
+  --wc-muted2: rgba(255, 255, 255, 0.78);
+  --wc-shadow: 0 22px 50px rgba(6, 78, 59, 0.22);
+  /* legacy aliases used in some components */
+  --background: transparent;
+  --foreground: var(--wc-ink);
+  --wc-green-deep: #052e16;
+  --wc-green-bright: #059669;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  /* --font-outfit / --font-bebas come from next/font on <html>; do not self-reference here */
+  --font-inter: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  --font-pp-neue: "PP Neue Montreal", sans-serif;
+}
+
+/* worldcupcoins.org — fixed page backdrop (.bg … .bg-gloss) */
+.wc-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.wc-bg-base {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 12%, rgba(147, 197, 253, 0.2), transparent 46%),
+    radial-gradient(circle at 14% 22%, rgba(59, 130, 246, 0.22), transparent 46%),
+    radial-gradient(circle at 88% 26%, rgba(96, 165, 250, 0.14), transparent 52%),
+    radial-gradient(circle at 50% 112%, rgba(34, 197, 94, 0.12), transparent 56%),
+    linear-gradient(180deg, #05061a 0%, #07122c 45%, #0b2a5a 100%);
+}
+.wc-bg-stripes {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  mix-blend-mode: soft-light;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 52px,
+    rgba(255, 255, 255, 0.06) 52px,
+    rgba(255, 255, 255, 0.06) 54px
+  );
+}
+.wc-bg-stadium {
+  position: absolute;
+  inset: 0;
+  background: url("/worldcupcoins/bg-stadium.svg") center / cover no-repeat;
+  opacity: 0.34;
+  mix-blend-mode: normal;
+}
+.wc-bg-trophy {
+  position: absolute;
+  inset: 0;
+  background: url("/worldcupcoins/bg-trophy.svg") center 120px /
+    min(820px, 80vw) no-repeat;
+  opacity: 0.36;
+  mix-blend-mode: normal;
+}
+.wc-bg-confetti {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(251, 191, 36, 0.38) 0 2px, transparent 3px),
+    radial-gradient(circle at 30% 10%, rgba(34, 197, 94, 0.32) 0 2px, transparent 3px),
+    radial-gradient(circle at 60% 18%, rgba(59, 130, 246, 0.38) 0 2px, transparent 3px),
+    radial-gradient(circle at 85% 12%, rgba(244, 63, 94, 0.26) 0 2px, transparent 3px),
+    radial-gradient(circle at 20% 55%, rgba(251, 191, 36, 0.22) 0 2px, transparent 3px),
+    radial-gradient(circle at 75% 60%, rgba(34, 197, 94, 0.18) 0 2px, transparent 3px);
+  opacity: 0.18;
+  mix-blend-mode: screen;
+}
+.wc-bg-gloss {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 40%, transparent 35%, rgba(0, 0, 0, 0.55) 100%),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 35%,
+      rgba(255, 255, 255, 0.06) 100%
+    );
+}
+
+/* .site-tab / .site-tab-active */
+.wc-nav-pill {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-size: 15px;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transition: background 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.wc-nav-pill:hover {
+  background: rgba(255, 255, 255, 0.32);
+}
+.wc-nav-pill-active {
+  background: rgba(253, 224, 71, 0.95);
+  color: #064e3b;
+}
+
+/* .card */
+.wc-card {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  padding: 14px;
+  box-shadow: var(--wc-shadow);
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+.wc-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 28px 70px rgba(6, 78, 59, 0.24);
+}
+
+/* Scrollable variant (modals): base .card uses overflow:hidden for glow; modals need vertical scroll */
+.wc-card.wc-card--scroll {
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.wc-card-glow {
+  pointer-events: none;
+  position: absolute;
+  right: -30px;
+  top: -30px;
+  width: 140px;
+  height: 140px;
+  border-radius: 999px;
+  background: rgba(74, 222, 128, 0.25);
+  filter: blur(34px);
+  transition: background 0.18s ease;
+}
+.wc-card:hover .wc-card-glow {
+  background: rgba(253, 224, 71, 0.3);
+}
+
+/* .btn-pump */
+.wc-btn-pump {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 900;
+  text-decoration: none;
+  color: #fff;
+  background: #059669;
+  box-shadow: 0 8px 20px rgba(5, 46, 22, 0.22);
+  transition: background 0.12s ease, transform 0.12s ease;
+  pointer-events: auto;
+}
+.wc-btn-pump:hover {
+  background: #047857;
+  transform: translateY(-1px);
+}
+
+/* .stat */
+.wc-stat {
+  min-width: 0;
+  border-radius: 12px;
+  padding: 8px 10px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: linear-gradient(
+    135deg,
+    rgba(236, 253, 245, 0.9),
+    rgba(224, 242, 254, 0.85)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.wc-stat-vol {
+  background: linear-gradient(
+    135deg,
+    rgba(245, 243, 255, 0.95),
+    rgba(224, 231, 255, 0.88)
+  );
+  border-color: rgba(196, 181, 253, 0.75);
+}
+.wc-stat-gold {
+  grid-column: 1 / -1;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 251, 235, 0.95),
+    rgba(255, 237, 213, 0.88)
+  );
+}
+.wc-stat-label {
+  font-size: 11px;
+  color: rgba(51, 65, 85, 0.85);
+  margin: 0;
+  font-weight: 400;
+}
+.wc-stat-big {
+  margin: 3px 0 0;
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  color: #064e3b;
+}
+.wc-stat-big-vol {
+  color: #1e1b4b;
+}
+.wc-stat-mono {
+  display: block;
+  max-width: 100%;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    monospace;
+  font-size: 11px;
+  line-height: 1.35;
+  font-weight: 700;
+  color: #0f172a;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+@media (min-width: 380px) {
+  .wc-stat-mono {
+    font-size: 12px;
+  }
+}
+@media (min-width: 480px) {
+  .wc-stat-mono {
+    font-size: 13px;
+    line-height: 1.3;
+  }
+}
+.wc-mint-line {
+  margin-top: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    monospace;
+  font-size: 11px;
+  color: rgba(71, 85, 105, 0.92);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* .name .title */
+/* Market titles are full questions — unlike short country names on worldcupcoins, allow wrapping */
+.wc-card-title {
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  margin: 0;
+  color: #052e16;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: manual;
+  line-height: 1.15;
+}
+
+/* .flag */
+.wc-flag {
+  width: 40px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 6px 16px rgba(2, 6, 23, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* .stats grid */
+.wc-stats-grid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+/* .board h2 — section headings on dark page */
+.wc-section-title {
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: 44px;
+  letter-spacing: 0.02em;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 0 16px 45px rgba(0, 0, 0, 0.2);
+  line-height: 1;
+}
+
+/* Smaller Bebas headings on inner pages */
+.wc-page-title {
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  letter-spacing: 0.02em;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 0 16px 45px rgba(0, 0, 0, 0.2);
+  line-height: 1;
+}
+
+/* .btn yellow CTA */
+.wc-btn-cta {
+  border: 0;
+  border-radius: 999px;
+  background: rgba(253, 224, 71, 0.95);
+  color: #064e3b;
+  font-weight: 900;
+  font-size: 14px;
+  padding: 12px 16px;
+  cursor: pointer;
+  box-shadow: 0 18px 40px rgba(6, 78, 59, 0.2);
+  transition: transform 0.12s ease, filter 0.12s ease, opacity 0.12s ease;
+}
+.wc-btn-cta:hover {
+  filter: brightness(1.03);
+  transform: translateY(-1px);
+}
+
+body {
+  background: transparent;
+  min-height: 100vh;
+  color: var(--wc-ink);
+  font-family: var(--font-outfit), system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    sans-serif;
+  position: relative;
+}
+/* body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/texture.png');
+  background-size: 100% 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 1;
+} */
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+input, textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes modalBackdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalBackdropFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes modalSlideDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}
+
+.modal-backdrop-enter {
+  animation: modalBackdropFadeIn 0.3s ease-out forwards;
+}
+
+.modal-backdrop-exit {
+  animation: modalBackdropFadeOut 0.2s ease-in forwards;
+}
+
+.modal-content-enter {
+  animation: modalSlideUp 0.4s ease-out forwards;
+}
+
+.modal-content-exit {
+  animation: modalSlideDown 0.3s ease-out forwards;
+}
