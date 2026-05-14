@@ -20,20 +20,20 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://wcupbets.io"),
-  title: "WCupBets",
+  metadataBase: new URL("https://wcupbets.com"),
+  title: "WCUPBETS",
   description:
-    "The prediction market built for World Cup country coin traders — structured YES/NO on squad meme caps.",
+    "The prediction market for world cup country coins on pump.fun",
   // Icons: src/app/favicon.ico (many browsers request this first), icon.png, apple-icon.png — keep them in sync.
   openGraph: {
-    title: "WCupBets",
+    title: "WCUPBETS",
     description:
-      "The prediction market built for World Cup country coin traders — structured YES/NO on squad meme caps.",
+      "The prediction market for world cup country coins on pump.fun",
     images: [
       {
         url: "/og-image.png",
-        width: 1200,
-        height: 630,
+        width: 1000,
+        height: 1000,
         alt: "WCupBets",
       },
     ],
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "WCupBets",
+    title: "WCUPBETS",
     description:
-      "The prediction market built for World Cup country coin traders — structured YES/NO on squad meme caps.",
+      "The prediction market for world cup country coins on pump.fun",
     images: ["/og-image.png"],
   },
 };

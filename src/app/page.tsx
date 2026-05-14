@@ -32,7 +32,7 @@ export default function Home() {
           }`}
         >
           <div className="wc-section-title flex gap-3 items-center">
-            <Image src={cup} alt="" className="w-9 h-9 shrink-0" style={{ filter: "brightness(0) invert(1)", opacity: 0.9 }} />
+            <Image src={cup} alt="" className="w-9 h-9 shrink-0" style={{ filter: "brightness(0) saturate(100%) invert(78%) sepia(60%) saturate(800%) hue-rotate(5deg) brightness(105%)", opacity: 0.95 }} />
             {t("home.mostPopular")}
           </div>
           <RefreshTicker />
