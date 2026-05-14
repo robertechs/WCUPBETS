@@ -55,7 +55,7 @@ function Navbar() {
           </Link>
         </div>
 
-        <div className="flex items-center gap-2 flex-wrap justify-end">
+        <div className="hidden md:flex items-center gap-2 flex-wrap justify-end">
           <a
             href="https://x.com/0xricch"
             target="_blank"
