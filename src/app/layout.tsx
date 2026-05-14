@@ -24,11 +24,7 @@ export const metadata: Metadata = {
   title: "WCupBets",
   description:
     "The prediction market built for World Cup country coin traders — structured YES/NO on squad meme caps.",
-  icons: {
-    icon: [{ url: "/favicon-logo.png", type: "image/png", sizes: "any" }],
-    shortcut: "/favicon-logo.png",
-    apple: "/favicon-logo.png",
-  },
+  // Icons auto-detected from src/app/icon.png + src/app/apple-icon.png
   openGraph: {
     title: "WCupBets",
     description:
