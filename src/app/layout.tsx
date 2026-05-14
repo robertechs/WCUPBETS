@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   title: "WCupBets",
   description:
     "The prediction market built for World Cup country coin traders — structured YES/NO on squad meme caps.",
-  // Icons auto-detected from src/app/icon.png + src/app/apple-icon.png
+  // Icons: src/app/favicon.ico (many browsers request this first), icon.png, apple-icon.png — keep them in sync.
   openGraph: {
     title: "WCupBets",
     description:
