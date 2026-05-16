@@ -84,7 +84,7 @@ const translations = {
       account: '',
       tagline: 'Make your call on every country coin',
       caLabel: 'Contract address',
-      caPlaceholder: '33eum82LaAhtv5YkUq1BdwEviSErH5CnFxqVNLT5pump'
+      caPlaceholder: '— TBA —'
     },
     home: {
       mostPopular: 'Featured market',
@@ -170,7 +170,7 @@ const translations = {
       account: '',
       tagline: 'Make your call on every country coin',
       caLabel: '合约地址',
-      caPlaceholder: '33eum82LaAhtv5YkUq1BdwEviSErH5CnFxqVNLT5pump'
+      caPlaceholder: '— TBA —'
     },
     home: {
       mostPopular: 'Featured market',
