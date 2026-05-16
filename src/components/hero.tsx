@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
 import { useAnimationSequence } from "@/hooks/useAnimationSequence";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -7,6 +8,15 @@ import x from "@/../public/twitter.svg";
 function Hero() {
   const { hero } = useAnimationSequence();
   const { t } = useLanguage();
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyCA = () => {
+    const ca = t("hero.caPlaceholder");
+    navigator.clipboard.writeText(ca).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
 
   return (
     <div
@@ -40,14 +50,25 @@ function Hero() {
       </div>
       <div className="flex flex-col items-center gap-1 mt-2 text-[rgba(253,230,138,0.95)]">
         <span className="text-sm font-semibold">$WCUP</span>
-        <div className="flex flex-col items-center gap-0.5 mt-1 max-w-[min(100%,26rem)] px-3">
+        <button
+          type="button"
+          onClick={handleCopyCA}
+          title="Click to copy CA"
+          className="flex flex-col items-center gap-0.5 mt-1 max-w-[min(100%,26rem)] px-3 cursor-pointer bg-transparent border-0 group"
+        >
           <span className="text-[10px] uppercase tracking-[0.12em] text-white/45 font-medium">
-            {t("hero.caLabel")}
+            {copied ? "Copied!" : t("hero.caLabel")}
           </span>
-          <span className="text-[11px] font-mono text-white/65 text-center tracking-tight">
+          <span className="text-[11px] font-mono text-center tracking-tight flex items-center gap-1.5 transition-colors group-hover:text-white/90 text-white/65">
             {t("hero.caPlaceholder")}
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-50 shrink-0">
+              {copied
+                ? <path d="M20 6L9 17l-5-5" />
+                : <><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></>
+              }
+            </svg>
           </span>
-        </div>
+        </button>
       </div>
     </div>
   );
