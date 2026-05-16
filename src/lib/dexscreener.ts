@@ -24,7 +24,7 @@ type TokenResponse = { pairs?: DexPair[] };
  *  and full-name variants so any symbol used in markets.ts resolves to the right token. */
 const KNOWN_MINT_BY_SYMBOL: Record<string, string> = {
   // Hub token
-  WORLDCUP:    "33eum82LaAhtv5YkUq1BdwEviSErH5CnFxqVNLT5pump",
+  WORLDCUP:    "HSu9YSmPgvgpnS51bhNQ8Sp1PYcXKWPSNKVNQMVDpump",
 
   // CONCACAF
   MEX:         "4DbaSWS3jYHEmQQP2jGHLz2PMHrmzbWNZynM32YFpump",
