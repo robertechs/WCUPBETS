@@ -5,12 +5,13 @@ import React, { useEffect, useState } from "react";
 import time from "@/../public/time.svg";
 import { useWallet } from "@/contexts/WalletContext";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useMarketPools } from "@/hooks/useMarketPools";
 import { useResolveMintBySymbol } from "@/hooks/useResolveMintBySymbol";
 import { useDexScreenerMc } from "@/hooks/useDexScreenerMc";
 import { getRoundDeadlineMs, type TournamentRoundId } from "@/lib/tournament";
 import { formatCompactUsd, formatUsdPrice } from "@/lib/format";
 import type { WcupMarketType } from "@/lib/markets";
+import { getMarketCardStats } from "@/lib/market-card-stats";
+import { MarketActivityBar } from "./market-activity-bar";
 import BettingModal from "./betting-modal";
 
 const GREEN = "#22c55e";
@@ -119,9 +120,8 @@ export default function CardFullWidth({
   const dexB = useDexScreenerMc(
     marketType === "h2h" ? mintBQuery.data : undefined,
   );
-  const marketData = useMarketPools(marketId);
-
-  const percentage = marketData.percentage || initialPercentage;
+  const cardStats = getMarketCardStats(marketId);
+  const percentage = `${cardStats.yesPercent}%`;
 
   const deadlineMs = getRoundDeadlineMs(roundId);
   useEffect(() => {
@@ -248,6 +248,7 @@ export default function CardFullWidth({
           <span className="text-[#B52E29] font-semibold text-[18px]">{t("home.no")}</span>
         </button>
       </div>
+      <MarketActivityBar marketId={marketId} />
     </div>
   );
 

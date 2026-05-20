@@ -5,12 +5,13 @@ import React, { useEffect, useState } from "react";
 import time from "@/../public/time.svg";
 import { useWallet } from "@/contexts/WalletContext";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useMarketPools } from "@/hooks/useMarketPools";
 import { useResolveMintBySymbol } from "@/hooks/useResolveMintBySymbol";
 import { useDexScreenerMc } from "@/hooks/useDexScreenerMc";
 import { getRoundDeadlineMs, type TournamentRoundId } from "@/lib/tournament";
 import { formatCompactUsd, formatUsdPrice } from "@/lib/format";
 import type { WcupMarketType } from "@/lib/markets";
+import { getMarketCardStats } from "@/lib/market-card-stats";
+import { MarketActivityBar } from "./market-activity-bar";
 import BettingModal from "./betting-modal";
 
 const GREEN = "#22c55e";
@@ -121,9 +122,8 @@ export default function Card({
     marketType === "h2h" ? mintBQuery.data : undefined,
   );
 
-  const marketData = useMarketPools(marketId);
-
-  const percentage = marketData.percentage || initialPercentage;
+  const cardStats = getMarketCardStats(marketId);
+  const percentage = `${cardStats.yesPercent}%`;
 
   const deadlineMs = getRoundDeadlineMs(roundId);
 
@@ -296,6 +296,7 @@ export default function Card({
               </span>
             </button>
           </div>
+          <MarketActivityBar marketId={marketId} />
         </div>
 
         <div className="flex justify-between mt-3 gap-2 text-[12px] text-[rgba(51,65,85,0.85)]">
