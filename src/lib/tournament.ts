@@ -33,6 +33,16 @@ export const TOURNAMENT_ROUNDS = {
     /** May 19, 2026 */
     deadlineIso: "2026-05-19T23:59:59.000Z",
   },
+  may21: {
+    id: "may21" as const,
+    label: "May 21",
+    deadlineIso: "2026-05-21T23:59:59.000Z",
+  },
+  may22: {
+    id: "may22" as const,
+    label: "May 22",
+    deadlineIso: "2026-05-22T23:59:59.000Z",
+  },
 } as const;
 
 export type TournamentRoundId = keyof typeof TOURNAMENT_ROUNDS;
